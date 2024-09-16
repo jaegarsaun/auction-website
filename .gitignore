@@ -37,3 +37,5 @@ next-env.d.ts
 
 # firebase
 /src/app/services/firebase.js
+
+.env.local
