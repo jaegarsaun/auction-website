@@ -3,9 +3,11 @@ import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import { DropDownButton } from "@/components/custom-ui/buttons/nav-dropdown-button"
 import { signOutUser } from "@/app/services/firebase";
+import AuthGuard from "./AuthGuard";
 
 export default function Navbar(){
     return (
+        <AuthGuard>
         <header className="flex h-20 w-full shrink-0 items-center px-4 md:px-6">
           <Sheet>
             <SheetTrigger asChild>
@@ -44,6 +46,7 @@ export default function Navbar(){
             <DropDownButton />
           </nav>
         </header>
+        </AuthGuard>
       )
     }
     

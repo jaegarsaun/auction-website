@@ -2,7 +2,7 @@
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getFirestore } from "firebase/firestore";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "firebase/auth";
 
 // Use environment variables for Firebase config
 const firebaseConfig = {
@@ -59,3 +59,19 @@ export const signOutUser = async () => {
       throw new Error(error.message);
     }
   };
+  // Function to listen to authentication state changes
+  export const authStateListener = (onUserAuthenticated, onUserSignedOut) => {
+    const auth = getAuth();
+  
+    // Set up listener for auth state changes
+    return onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, pass user to the callback
+        onUserAuthenticated(user);
+      } else {
+        // User is signed out, trigger signed out callback
+        onUserSignedOut();
+      }
+    });
+  };
+  

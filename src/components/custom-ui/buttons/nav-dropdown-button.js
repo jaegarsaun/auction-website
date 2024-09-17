@@ -42,7 +42,7 @@ export function DropDownButton() {
         title: "Signed out",
         description: "You have been signed out successfully.",
       });
-      router.push("/login"); // Redirect to login page after signing out
+      router.push("/auth/login"); // Redirect to login page after signing out
     } catch (error) {
       toast({
         variant: "destructive",
