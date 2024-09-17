@@ -5,15 +5,15 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Icons } from "@/components/ui/icons";
-import { useToast } from "@/hooks/use-toast"; // Assuming you're using a toast for notifications
-
-// Import the Firebase login function
-import { signInUserWithEmailAndPassword } from "@/app/services/firebase"; // Adjust the path as needed
+import { useToast } from "@/hooks/use-toast"; 
+import { useRouter } from "next/navigation";
+import { signInUserWithEmailAndPassword } from "@/app/services/firebase"; 
 
 export default function LoginForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { toast } = useToast(); // To display success/error messages
+  const { toast } = useToast(); 
+  const router = useRouter();
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -23,8 +23,7 @@ export default function LoginForm() {
         title: "Success!",
         description: "You have logged in successfully.",
       });
-      // Perform post-login actions, such as redirecting the user
-      console.log("Logged in user:", user);
+      router.push("/home");
     } catch (error) {
       toast({
         variant: "destructive",
