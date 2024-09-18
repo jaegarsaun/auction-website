@@ -24,7 +24,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <ThemeProvider
-          attribute="class"
+          attribute="class" 
           defaultTheme="system"
           enableSystem
           disableTransitionOnChange
@@ -33,7 +33,6 @@ export default function RootLayout({ children }) {
         </ThemeProvider>
         <Toaster />
       </body>
-      
     </html>
   );
 }
